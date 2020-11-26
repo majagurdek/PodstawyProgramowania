@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main ()
+{
+    const char tekst[] = "Jest to Gucci";
+    FILE *plik;
+    if ((plik = fopen("doda.txt", "w")) == NULL)
+    {
+        printf("No nie działa");
+        exit(1);
+    }
+    fprintf(plik, "%s", tekst);
+    fclose(plik);
+
+    fopen("doda.txt", "a");
+    fprintf(plik, "Maja podaj torbę");
+    fclose(plik);
+
+    return 0;
+}
