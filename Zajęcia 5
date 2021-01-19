@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <math.h>
+
+unsigned int fibonacci(unsigned int n)
+{
+    if (n==0)
+    {
+        return 0;
+    }
+    if (n==1 || n==2)
+    {
+        return 1;
+    }
+    else
+    {
+        return fibonacci(n-2)+fibonacci(n-1);
+    }
+}
+
+int main()
+{
+    printf("%u\n", fibonacci(18));
+}
