@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <time.h>
+
+int main()
+{
+  time_t currenttime;
+  time(&currenttime);
+  struct tm *czas = localtime(&currenttime);
+  printf("%i %i %i", czas->tm_day, czas->tm_mon, czas->tm_year + 1990);
+  return 0;
+}
