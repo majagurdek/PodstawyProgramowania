@@ -118,9 +118,9 @@ int main(int argc, char **argv) {
     // INICJALIZACJA I USTAWIENIA.
     //------------------------------------------------------------------------------------------------------------------
 
-    al_init();               		// Inicjalizauje bibliotekę Allegro. To musi być zrobione na samym początku.
-    al_install_keyboard();			// Inicjalizuje klawiaturę. Potrzebne jeśli chcemy używać wprowadzania z klawiatury.
-    al_install_mouse();       		// Inicjalizuje mysz. Potrzebne gdy chcemy używać myszy w programie.
+    al_init();               		
+    al_install_keyboard();			
+    al_install_mouse();       		
 	al_init_primitives_addon();
 
 	// Przypisywanie kolorów.
@@ -141,7 +141,7 @@ int main(int argc, char **argv) {
     
     ALLEGRO_DISPLAY *display = al_create_display(cell_width * map.cols, cell_height * map.rows);
     al_set_window_position(display, 200, 200);
-    al_set_window_title(display, "Gra");                            // Ustawia nazwę w tytule okna.  
+    al_set_window_title(display, "Gra");                           
     
     // Znajdujemy pozycję początku i końca.
     Point start = find_point(&map, 2);
@@ -161,12 +161,13 @@ int main(int argc, char **argv) {
     // Kolejka komunikatów i rejestracja źródeł komunikatów.
     //=======================================================
 
-    ALLEGRO_TIMER *timer = al_create_timer(20e-3);                    // Tworzy timer i ustawia tykanie co 20 ms.
+    ALLEGRO_TIMER *timer = al_create_timer(20e-3);                   
 
-    ALLEGRO_EVENT_QUEUE *event_queue = al_create_event_queue();                    // Tworzymy kolejkę zdarzeń.
-    ALLEGRO_EVENT_SOURCE *disp_esource = al_get_display_event_source(display);    //Źródłem zdarzeń jest okno.
-    ALLEGRO_EVENT_SOURCE *kbd_esource = al_get_keyboard_event_source();            // Źródłem zdarzeń jest klawiatura.
-    ALLEGRO_EVENT_SOURCE *timer_esource = al_get_timer_event_source(timer);        // Źródłem zdarzeń jest timer.
+    ALLEGRO_EVENT_QUEUE *event_queue = al_create_event_queue();                   
+    ALLEGRO_EVENT_SOURCE *disp_esource = al_get_display_event_source(display);    
+    ALLEGRO_EVENT_SOURCE *kbd_esource = al_get_keyboard_event_source();            
+    ALLEGRO_EVENT_SOURCE *timer_esource = al_get_timer_event_source(timer);        
+	
 
     // Rejestrowanie źródeł zdarzeń.
     al_register_event_source(event_queue, disp_esource);
@@ -189,17 +190,17 @@ int main(int argc, char **argv) {
     // Pętla zdarzeń.
     int run = 1;
     do {
-        ALLEGRO_EVENT event;                        // Zmienna event będzie przechowywać informacje o zdarzeniu.
-        al_wait_for_event(event_queue, &event);        // Czeka na zdarzenie i kiedy nastąpi, zapisz je w "event".
+        ALLEGRO_EVENT event;                        
+        al_wait_for_event(event_queue, &event);       
 
         // Przetwórz odebrane zdarzenie.
         switch (event.type) {
-            case ALLEGRO_EVENT_DISPLAY_CLOSE:        // Zdarzenie występujące po kliknięciu przyciku X okna.
+            case ALLEGRO_EVENT_DISPLAY_CLOSE:        
                 run = 0;
                 break;
-            case ALLEGRO_EVENT_TIMER:                // Zdarzenie występujące na skutek tyknięcia zegara.
+            case ALLEGRO_EVENT_TIMER:                
 
-                al_clear_to_color(al_map_rgb(255, 255, 255)); // Czyści ekran na biało.
+                al_clear_to_color(al_map_rgb(255, 255, 255)); 
                 show_map(&map, cell_width, cell_height);
 
                 // Reagujemy na naciśnięte klawisze.
@@ -279,8 +280,8 @@ int main(int argc, char **argv) {
     //------------------------------------------------------------------------------------------------------------------
 
     al_destroy_timer(timer);
-    al_destroy_event_queue(event_queue);                            // Niszczenie kolejki zdarzeń.
-    al_destroy_display(display);                                    // Niszczenie okna.
+    al_destroy_event_queue(event_queue);                          
+    al_destroy_display(display);                                   
     destroy_map(&map);
     return 0;
 }
