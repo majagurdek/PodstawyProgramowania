@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void zamiana()
+{
+    string napis = "drabina dom xd";
+    auto dl = napis.length();
+    for (int i =0; i<dl; ++i)
+    {
+        if (napis[i]=='d')
+        {
+            napis[i]='D';
+        }
+    }
+    cout << napis << endl;
+}
+int main()
+{
+    zamiana();
+    return 0;
+}
