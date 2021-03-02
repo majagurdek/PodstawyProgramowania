@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+
+int *doubleCopy (int *begin, int *end)
+{
+    if (begin == nullptr || end == nullptr) return nullptr;
+
+    int n = end-begin+1;
+
+    int *copy = new int [n];
+
+    for (int i = 0; i<n; ++i)
+    {
+        *(copy+i) = *(begin+i)*2;
+
+    }
+    return copy;
+}
+
+int main()
+{
+    int tab[] = {17, 2, 35, 23, 16, 91};
+    int *copytab = doubleCopy(&tab[0], &tab[5]);
+    for (int i=0; i<=5; i++)
+    {
+        cout << copytab[i] << " ";
+    }
+    return 0;
+}
