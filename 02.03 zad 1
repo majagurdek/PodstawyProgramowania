@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void print(int n)
+{
+    cout << n << endl;
+}
+void print(double n)
+{
+    cout << n << endl;
+}
+struct ulamek
+{
+    int l;
+    int m;
+};
+void print(ulamek u)
+{
+    cout << u.l << "/" << u.m << endl;
+}
+void print(...)
+{
+}
+void print(string *napis)
+{
+    cout << *napis << endl;
+}
+void print(ulamek &ref_u)
+{
+    cout << ref_u.l << "/" << ref_u.m << endl;
+}
+void print(int *tab, int s)
+{
+    for(int i = 0; i < s; i++)
+    {
+        cout << tab[i] << ", ";
+    }
+    cout << endl;
+}
+void print(int (&tab)[15])
+{
+    for(int i = 0; i < 15; i++)
+    {
+        cout << tab[i] << ", ";
+    }
+    cout << endl;
+}
