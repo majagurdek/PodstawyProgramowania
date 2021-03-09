@@ -1,0 +1,85 @@
+#include <iostream>
+
+using namespace std;
+
+class Kolo
+{
+private:
+    double R;
+public:
+    Kolo()
+    {
+        R = 5;
+        cout<<"Konstruktor"<<endl;
+    };
+    Kolo(double r)
+    {
+        R = r;
+        cout<<"Konstruktor z wartością"<<endl;
+    };
+    ~Kolo()
+    {
+        cout<<"Dekonstruktor"<<endl;
+    }
+    void setR(double r)
+    {
+        R = r;
+    }
+    double getR() const
+    {
+        return R;
+    };
+
+    double pole() const
+    {
+        return 3.14*R*R;
+    }
+    double obwod() const
+    {
+        return 2*3.14*R;
+    }
+
+};
+
+class Prostokat
+{
+private:
+    double A,B;
+public:
+    Prostokat(double a, double b)
+    {
+        A = a;
+        B = b;
+        cout<<"Prostokąt"<<endl;
+    };
+    Prostokat(double a)
+    {
+        A = a;
+        cout<<"Kwadrat"<<endl;
+    };
+    ~Prostokat()
+    {
+        cout<<"Dekonstruktor"<<endl;
+    }
+    void set_rozmiar(double a, double b)
+    {
+        A = a;
+        B = b;
+    }
+    double get_A() const
+    {
+        return A;
+    };
+    double get_B() const
+    {
+        return B;
+    };
+    double pole() const
+    {
+        return A*B;
+    }
+    double obwod() const
+    {
+        return 2*(A+B);
+    }
+};
