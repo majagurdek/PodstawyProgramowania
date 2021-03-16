@@ -1,0 +1,39 @@
+#include <iostream>
+
+using namespace std;
+
+class String{
+public:
+    char *string;
+    String()
+    {
+        string = new char[0];
+    }
+
+    String(const char *s)
+    {
+        size_t dl = strlen(s);
+        char *n = new char[dl + 1];
+        strcpy(n, s);
+    }
+    String(const String *s)
+    {
+        size_t dl = strlen(s->string);
+        char *n= new char[dl + 1];
+        strcpy(n, s->string);
+    }
+    ~String()
+    {
+        delete string;
+    }
+    void setNewText(const char* newText)
+    {
+        size_t dl = strlen(newText);
+        char *n = new char[dl + 1];
+        strcpy(n, newText);
+    }
+    int getsize()const
+    {
+        return strlen(string);
+    }
+};
