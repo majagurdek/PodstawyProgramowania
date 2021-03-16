@@ -2,6 +2,8 @@
 
 using namespace std;
 
+// zadanie 2
+
 class String{
 public:
     char *string;
@@ -37,3 +39,25 @@ public:
         return strlen(string);
     }
 };
+
+
+// Zadanie 3
+
+class Osoba
+{
+private:
+    String Imie;
+    String Nazwisko;
+public:
+    Osoba(): Imie("Janusz"), Nazwisko("Kowalski"){}
+    Osoba(const char* i, const char* n)
+    {
+        Imie.setNewText(i);
+        Nazwisko.setNewText(n);
+    }
+    ~Osoba()
+    {
+        cout<<"Osoba zniszczona"<<endl;
+    }
+};
+
