@@ -114,8 +114,8 @@ double sum(Object *wsk[], size_t size)
 
 int main()
 {
-    StringObject s("napis")
-    cout<<s.getChar()<<endl
+    StringObject s("napis");
+    cout<<s.getChar()<<endl;
     Object* arr[4];
     arr[0] = new StringObject("string");
     arr[1] = new IntObject(123);
