@@ -1,0 +1,131 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+class Object
+{
+public:
+    virtual void whatAmI() = 0;
+    virtul string toString() = 0;
+    virtual Object* clone() = 0;
+    virtual ~Object() = 0;
+};
+
+class StringObject : public Object
+{
+private :
+    char* value;
+    size_t size;
+public :
+    explicit StringObject(char *a)
+    {
+        value=a;
+    }
+    void whatAmI() override
+    {
+        cout<<"I'm StringObject"<<endl;
+    }
+    string toString() override
+    {
+        return "StringObject";
+    }
+    char* getChar()const
+    {
+        return value;
+    }
+    size_t getSize()const
+    {
+        return size;
+    }
+    Object* clone() override
+    {
+        return new StringObject(*this);
+    }
+
+};
+
+class IntObject : public Object
+{
+private :
+    int value;
+public :
+    explicit IntObject(int a)
+    {
+        value = a;
+    }
+    void whatAmI() override
+    {
+        cout<<"I'm IntObject"<endl;
+    }
+    string toString() override
+    {
+        return "IntObject";
+    }
+    int getInt()const
+    {
+        return value;
+    }
+    Object* clone() override
+    {
+        return new IntObject(*this);
+    }
+};
+
+class DoubleObject : public Object
+{
+private :
+    double value;
+public :
+    explicit DoubleObject(double a)
+    {
+        value = a;
+    }
+    void whatAmI() override
+    {
+        cout<<"I'm DoubleObject"<endl;
+    }
+    string toString() override
+    {
+        return "DoubleObject";
+    }
+    double getDouble()const
+    {
+        return value;
+    }
+    Object* clone() override
+    {
+        return new DoubleObject(*this);
+    }
+};
+
+double sum(Object *wsk[], size_t size)
+{
+    double s = 0;
+    for (int i = 0; i<size; i++)
+    {
+        if(wsk[i]->toString()=="DoubleObject")
+        {
+            s+= dynamic_cast<DoubleObject*>(wsk[i]->getDouble();
+        }
+    }
+    return s;
+}
+
+int main()
+{
+    StringObject s("napis")
+    cout<<s.getChar()<<endl
+    Object* arr[4];
+    arr[0] = new StringObject("string");
+    arr[1] = new IntObject(123);
+    arr[2] = new StringObject(123.45);
+    arr[3] = arr[2]->clone();
+    cout<<sum(arr, 20);
+    
+    for(int i=0; i<4; i++)
+    {
+        delete arr[i];
+    }
+    return 0;
+}
