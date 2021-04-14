@@ -1,0 +1,54 @@
+class Fraction
+{
+private:
+    int numerator;
+    int dominator;
+public:
+    Fraction
+    {
+        dominator = 1;
+        numerator = 0;
+    };
+    void setDominator(int);
+    int getDominator() const;
+    void setNumerator(int);
+    int getNumerator() const;
+};
+
+
+void Fraction::setDominator(int d)
+{
+    dominator = d;
+}
+
+int Fraction::getDominator() const
+{
+    return dominator;
+}
+
+void Fraction::setNumerator(int n)
+{
+    numerator = n;
+}
+
+int Fraction::getNumerator() const
+{
+    return numerator;
+}
+
+
+class Vector
+{
+private:
+    int size;
+    int capacity;
+public:
+    Vector();
+    explicit Vector(int s);
+    Vector(const Vector & vector);
+    ~Vector();
+    void push_back(const Fraction & x);
+    void reserve(size_t);
+    size_t size() const;
+    size_t capacity() const;
+};
