@@ -1,0 +1,84 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+class String{
+    char* data;
+    size_t size;
+public:
+    String()
+    {
+        size = 0;
+        data = new char[0];
+    }
+    String(const char* text)
+    {
+        if (text = nullptr){
+            throw length_errow("Length error");
+        }
+        else {
+            size = strlen(text);
+            data = new char[size + 1];
+            copy(&text[0], &text[size], &data[0]);
+
+        }
+    }
+    String(String &s1)
+    {
+        if (s1.text == nullptr){
+            throw length_errow("Length error");
+        }
+        else {
+            size = s1.size;
+            data = new char[size+1];
+            copy(&s1.data[0], &s1.dats[size], &data[0]);
+        }
+    }
+    ~String()
+    {
+        if (data != nullptr) delete data;
+    }
+    String& operator = (const char* newText)
+    {
+        if (newText = nullptr){
+            throw length_errow("Length error");
+        }
+        else {
+            size = strlen(newText);
+            data = new char[size + 1];
+            delete [] data;
+            copy(&newText[0], &newText[size], &data[0]);
+            return *this;
+        }
+    }
+    char* Data() const
+    {
+        return data;
+    }
+    int Size() const
+    {
+        return size;
+    }
+    String operator = (const String& newText)
+    {
+        size = newText.size;
+        data = new char [size + 1];
+        delete [] data;
+        copy(&newText.data[0], &newText.data[size], &data[0]);
+        return *this;
+    }
+    String operator += (const char* text2Append)
+    {
+        int size2 = strlen(text2Append);
+        char x = new char[size2 + size + 1];
+        copy(&data[0], &data[size], &x[0]);
+        data = new char[size+1];
+        delete [] data;
+        copy(&x[0], &x[size], &data[0]);
+        delete [] x;
+        copy(&text2Append[0], &text2Append[size2], &data[size]);
+        size += size2;
+        return *this;
+    }
+};
