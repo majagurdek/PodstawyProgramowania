@@ -1,0 +1,93 @@
+#include <iostream>
+#include <vector>
+#define N 10
+using namespace std;
+
+class VectoredList{
+public:
+    class Bucket{
+        Bucket(const char* text);
+        Bucket*next;
+        Bucket*prev;
+        const char* text[N];
+        int il = strlen(text);
+        ~Bucket();
+    };
+    VectoredList();
+    vector <Bucket> Vector;
+    Bucket*head;
+    Bucket*tail;
+    Bucket*capacity_;
+    Bucket*size_;
+
+    void push_back();
+    string& operator[](int el.num)const
+    {
+        return head[el.num/N].text[el.num%N];
+    }
+    ~VectoredList();
+};
+
+class Iterator{
+    string* v;
+public:
+    Iterator(string *v) : cursor(v){};
+    Iterator& operator++()
+    {
+        ++cursor;
+        return *this;
+    }
+    Iterator operator++(int)
+    {
+        VectoredListIterator temp=*this;
+        ++*this;
+        return temp;
+    }
+    string operator*() const
+    {
+        return v.operator[](cursor);
+    }
+};
+
+Iterator begin()
+{
+    return Iterator(head->text);
+}
+
+Iterator end()
+{
+    return Iterator(tail->text);
+}
+
+Bucket::Bucket(const char*text){
+    this->text = new char[strlen(text) + 1];
+    strcpy(this->text, text);
+    this->next = nullptr;
+    this->prev = nullptr;
+}
+
+void VectoredList::pushBack(const char* a)
+{
+    VectoredList *b = new VectoredList(a);
+    b->prev = end;
+    if(end)
+    {
+        end->next = b;
+    }
+    end = b;
+    if(start==nullptr)
+    {
+        start = end;
+    }
+}
+
+int main()
+{
+    VectoredList v = VectoredList(1);
+    for(size_t i = 100; i>=0; i--)
+        v.push_back();
+
+    for (auto& element : v)
+        cout << v << endl;
+    return 0;
+}
